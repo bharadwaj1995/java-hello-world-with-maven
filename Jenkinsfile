@@ -15,6 +15,8 @@ pipeline {
 		stage("Check Container") {
             steps {
                 sh "apt-get install python"
+                sh "apt-get install python3-distutils"
+				sh "apt-get install python3-apt"
                 sh "curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py"
                 sh "python3 get-pip.py"
                 sh "python3 -m pip install -U pip"
