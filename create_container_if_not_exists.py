@@ -1,15 +1,20 @@
 import docker
 DOCKER_CLIENT = docker.DockerClient(base_url='unix://var/run/docker.sock')
+client = docker.from_env()
 RUNNING = 'running'
 
-def is_running(container_name):
-    container = DOCKER_CLIENT.containers.get(container_name)
-
-    container_state = container.attrs['State']
-
-    container_is_running = container_state['Status'] == RUNNING
-
-    return container_is_running
+def create_if_not_present(container_name):
+    try:
+        container = DOCKER_CLIENT.containers.get(container_name)
+        container_state = container.attrs['State']
+        container_is_running = container_state['Status'] == RUNNING
+        return container_is_running
+    except:
+        client.containers.run("ubuntu:latest", "echo created container")
+        client.containers.run("bharadwaj1995/POC", detach=True)
+        return True
+        
+    
 
 my_container_name = "asdf"
-print(is_running(my_container_name))
+print(create_if_not_present(my_container_name))
