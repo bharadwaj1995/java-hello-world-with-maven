@@ -16,9 +16,9 @@ pipeline {
             steps {
                 sh "apt-get install python"
                 sh "curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py"
-                sh "python get-pip.py"
-                sh "python -m pip install -U pip"
-                sh "python -m pip --version"
+                sh "python3 get-pip.py"
+                sh "python3 -m pip install -U pip"
+                sh "python3 -m pip --version"
                 sh "mvn clean install"
             }
         }
