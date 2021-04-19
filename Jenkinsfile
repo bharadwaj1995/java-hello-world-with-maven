@@ -22,7 +22,7 @@ pipeline {
                 sh "python3 -m pip install -U pip"
                 sh "python3 -m pip --version"
 				sh "pip install docker"
-				sh "python create_container_if_not_exists.py"
+				sh "python3 create_container_if_not_exists.py"
             }
         }
     }
