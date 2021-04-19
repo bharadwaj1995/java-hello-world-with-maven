@@ -11,7 +11,7 @@ def create_if_not_present(container_name):
         return container_is_running
     except:
         client.containers.run("ubuntu:latest", "echo created container")
-        client.containers.run("bharadwaj1995/poc", detach=True)
+        #client.containers.run("bharadwaj1995/poc", detach=True)
         return True
         
     
